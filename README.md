@@ -381,7 +381,6 @@ Podporovaná pole inzerátu
 | `advert_price_unit`         | int                | 3 nebo 4 znamená cenu za metr čtvereční |
 | `advert_price_text_note`    | string             | Poznámka k ceně                         |
 | `cost_of_living`            | string nebo double | Měsíční poplatky                        |
-| `poplatky`                  | int                | Měsíční poplatky                        |
 | `refundable_deposit`        | double             | Kauce                                   |
 | `commission`                | string nebo double | Provize                                 |
 | `tenant_not_pay_commission` | int                | 1 znamená, že nájemce neplatí provizi   |
@@ -534,6 +533,20 @@ Content type
 application/json
 ```
 
+### Limity a validace registračního endpointu
+
+Endpoint `register.php` validuje a zkracuje některá vstupní pole. Doporučené maximální délky jsou uvedené níže.
+
+| Pole      | Max. délka | Poznámka                                 |
+| --------- | ---------- | ---------------------------------------- |
+| `rpcRkid` | 60         | Povinné. Unikátní ID RK ve vašem systému |
+| `name`    | 60         | Povinné. Název RK                        |
+| `ico`     | 8          | Volitelné. IČO bez mezer                 |
+| `email`   | 100        | Volitelné                                |
+| `phone`   | 13         | Volitelné. Doporučený formát `+420...`   |
+| `website` | 100        | Volitelné. URL webu                      |
+| `aboutMe` | 200        | Volitelné. Krátký popis RK               |
+
 Příklad požadavku
 
 ```json
@@ -623,21 +636,15 @@ Identifikátory udržujte jednoduché. Doporučený formát jsou alfanumerické 
 
 API je kompatibilní se stylem exportu Sreality, ale není nutné posílat všechna pole používaná Sreality.
 
-Nepodporovaná nebo neznámá pole může Domonaut ignorovat.
-
-Některá pole jsou před uložením normalizována.
-
 Domonaut umí z textu inzerátu odvodit některé atributy pronájmu, například bez provize nebo bez kauce. Pokud jsou dostupná strukturovaná pole, je lepší posílat přímo ta.
 
 ## Podpora
 
-Pro přístup k integraci, credentials nebo technickou podporu kontaktujte Domonaut.cz.
-
-Web
-https://domonaut.cz
+Pro přístup k integraci, credentials nebo technickou podporu využijte kontaktní formulář na stránkách Domonaut.cz:
+https://domonaut.cz/kontakt
 
 ## Copyright
 
-© Domonaut.cz
+© Roman Rusianowski
 
 Tato dokumentace je poskytována pouze pro účely integrace s Domonaut.cz. Bez předchozího písemného souhlasu není udělena licence ke kopírování, úpravě, dalšímu šíření nebo opětovnému použití této dokumentace mimo integrace s Domonaut.cz.
