@@ -129,7 +129,7 @@ Bearer token určuje integrační zdroj, například konkrétní realitní softw
 | `email` | ne | 100 | Prázdná hodnota se uloží jako `null`; delší hodnota je zkrácena |
 | `phone` | ne | 13 | Prázdná hodnota se uloží jako `null`; delší hodnota je zkrácena |
 | `website` | ne | 100 | Prázdná hodnota se uloží jako `null`; delší hodnota je zkrácena |
-| `aboutMe` | ne | 200 | Krátký popis RK; delší hodnota je zkrácena |
+| `aboutMe` | ne | 1000 | Popis činnosti realitní kanceláře |
 
 Endpoint u volitelných polí neprovádí úplnou významovou validaci. Neověřuje například syntaxi e-mailu, URL, telefonu ani skutečnou platnost IČO. Odesílatel má proto posílat již normalizovaná data.
 
@@ -147,7 +147,7 @@ curl --request POST \
     "email": "info@example.com",
     "phone": "+420700000000",
     "website": "https://example.com",
-    "aboutMe": "Krátký popis realitní kanceláře"
+    "aboutMe": "Popis realitní kanceláře"
   }'
 ```
 
